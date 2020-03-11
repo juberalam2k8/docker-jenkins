@@ -24,8 +24,11 @@ pipeline {
             }
       steps{
         script {
+          
           docker.withRegistry( '', registryCredential ) {
+            sh 'echo $dockerImage >> dockerImage.txt'
             dockerImage.push()
+            
           }
         }
       }
