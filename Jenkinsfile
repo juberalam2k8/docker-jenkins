@@ -21,8 +21,6 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          sh 'cat > image.txt'
-          sh 'dockerImage >> image.txt' 
         }
       }
     }
