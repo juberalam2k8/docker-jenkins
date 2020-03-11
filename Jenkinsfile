@@ -26,7 +26,7 @@ pipeline {
         script {
           
           docker.withRegistry( '', registryCredential ) {
-            build.environment.get("BUILD_NUMBER") > "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"
+            def BUILD_NUMBER = getBinding().getVariables()['BUILD_NUMBER'] > "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"
             dockerImage.push()
             
           }
