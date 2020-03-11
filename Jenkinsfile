@@ -27,7 +27,7 @@ pipeline {
           
           docker.withRegistry( '', registryCredential ) {
             bat 'set Image = dockerImage'
-            bat 'echo %Image% >> "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"'
+            echo %Image% >> "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"
             dockerImage.push()
             
           }
