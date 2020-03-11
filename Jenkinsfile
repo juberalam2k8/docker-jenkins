@@ -26,8 +26,7 @@ pipeline {
         script {
           
           docker.withRegistry( '', registryCredential ) {
-            bat 'set dockerImage=docker.build registry + ":$BUILD_NUMBER"'
-            bat 'echo $(docker.build registry + ":$BUILD_NUMBER) >> "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"'
+            bat 'env.dockerImage >> "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt"'
             dockerImage.push()
             
           }
