@@ -20,8 +20,7 @@ pipeline {
             }
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          echo $dockerImage >> dockerImage.txt
+          dockerImage = docker.build registry + ":$BUILD_NUMBER" >> dockerImage.txt
         }
       }
     }
