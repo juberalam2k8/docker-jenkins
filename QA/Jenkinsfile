@@ -1,0 +1,21 @@
+pipeline {
+  environment {
+    registry = "juberalam2k8/docker-jenkins"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any  
+ stage('Pull Image') {
+     when {
+                branch 'qa'
+            }
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.pull()
+          }
+        }
+      }
+    }
+}
+}
