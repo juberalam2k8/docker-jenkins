@@ -6,6 +6,9 @@ pipeline {
   }
   agent any
   stages {
+   when {
+                branch 'develop'
+            }
     stage('Cloning Git') {
       steps {
         git 'https://github.com/juberalam2k8/docker-jenkins.git'
@@ -26,6 +29,19 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
+          }
+        }
+      }
+    }
+
+   stage('Pull Image') {
+     when {
+                branch 'qa'
+            }
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.pull()
           }
         }
       }
