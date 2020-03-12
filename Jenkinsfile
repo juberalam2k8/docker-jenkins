@@ -43,7 +43,7 @@ pipeline {
             }
       steps{
         script {
-            docker.withRegistry("https://hub.docker.com/repository/registry-1.docker.io/juberalam2k8/docker-jenkins/", 'dockerhub') {
+            docker.withRegistry("https://hub.docker.com/repository/registry-1.docker.io/juberalam2k8", 'dockerhub') {
             docker.image("https://hub.docker.com/repository/registry-1.docker.io/juberalam2k8/docker-jenkins/").inside("-v /home/jenkins/foo.txt:/foo.txt")
             bat 'echo "modified-inside-container" > test.txt' // we can modify files in workspace
 		
