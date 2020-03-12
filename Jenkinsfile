@@ -7,17 +7,11 @@ pipeline {
   agent any
   stages {
     stage('Cloning Git') {
-     when {
-                branch 'develop'
-            }
       steps {
         git 'https://github.com/juberalam2k8/docker-jenkins.git'
       }
     }
     stage('Building image') {
-     when {
-                branch 'develop'
-            }
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
