@@ -50,8 +50,10 @@ pipeline {
             //set file_data=type test.txt
             //echo %file_data%
             //set a = bat 'type test.txt'
-            dockerImage.pull('docker-jenkins:${env.BUILD_NUMBER}')
+           // dockerImage.pull('docker-jenkins:${env.BUILD_NUMBER}')
            }
+          bat 'set file_data=type test.txt'
+          bat 'echo %file_data%'
         }
       }
     }
