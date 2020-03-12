@@ -43,7 +43,7 @@ pipeline {
             }
       steps{
         script {
-            bat 'docker pull juberalam2k8/docker-jenkins:latest'
+            bat 'docker pull juberalam2k8/docker-jenkins:20'
            
         }
       }
