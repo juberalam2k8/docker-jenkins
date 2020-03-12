@@ -43,10 +43,8 @@ pipeline {
             }
       steps{
         script {
-            dockerImage = 'juberalam2k8/docker-jenkins:latest'
-            dockerImage.pull()
-            
-          
+            bat 'docker pull juberalam2k8/docker-jenkins:latest'
+           
         }
       }
     }
