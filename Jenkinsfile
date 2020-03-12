@@ -51,7 +51,7 @@ pipeline {
             set file_data=type test.txt
             echo %file_data%
             //set a = bat 'type test.txt'
-            bat 'docker pull juberalam2k8/docker-jenkins:$file_data'
+            bat "docker pull juberalam2k8/docker-jenkins:$file_data"
            }
         }
       }
