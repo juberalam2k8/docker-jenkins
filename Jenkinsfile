@@ -54,7 +54,7 @@ pipeline {
            def filePath = readFile "C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-multibranch-example_qa\\test.txt" 
            def lines = filePath.readLines()
            env.BUILD_NO= lines
-           docker pull ${env.BUILD_NO}
+           bat 'docker pull ${env.BUILD_NO}'
            }
 	
         }
