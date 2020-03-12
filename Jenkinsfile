@@ -53,7 +53,7 @@ pipeline {
            // dockerImage.pull('docker-jenkins:${env.BUILD_NUMBER}')
            def filePath = readFile "C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-multibranch-example_qa\\test.txt" 
            def lines = filePath.readLines()
-           docker pull "$lines"
+           lines.pull()
            }
 	
         }
