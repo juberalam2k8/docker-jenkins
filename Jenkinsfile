@@ -52,8 +52,9 @@ pipeline {
             //set a = bat 'type test.txt'
            // dockerImage.pull('docker-jenkins:${env.BUILD_NUMBER}')
            }
-          bat 'set file_data=type test.txt'
-          bat 'echo %file_data%'
+	  def filePath = readFile "${WORKSPACE}/C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-multibranch-example_qa\\test.txt" 
+          def lines = filePath.readLines()
+          docker pull "$lines"
         }
       }
     }
