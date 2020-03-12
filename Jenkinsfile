@@ -47,10 +47,10 @@ pipeline {
            // bat 'echo $BUILD_NUMBER > test.txt'
 	   // bat "echo version := 1.0.${env.BUILD_ID} >> test.txt"
 	    bat "echo docker-jenkins:${env.BUILD_NUMBER} > test.txt"
-            set file_data=type test.txt
-            echo %file_data%
+            //set file_data=type test.txt
+            //echo %file_data%
             //set a = bat 'type test.txt'
-            dockerImage.pull()
+            dockerImage.pull('docker-jenkins:${env.BUILD_NUMBER}')
            }
         }
       }
