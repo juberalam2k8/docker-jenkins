@@ -32,7 +32,6 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
-            bat "echo docker-jenkins:${env.BUILD_NUMBER} > test.txt"
           }
         }
       }
