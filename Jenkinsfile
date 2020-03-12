@@ -45,7 +45,8 @@ pipeline {
         script {
             docker.withRegistry('', 'dockerhub') {
             //docker.image("https://hub.docker.com/repository/registry-1.docker.io/juberalam2k8/docker-jenkins/") > "C:\\Program Files (x86)\\Jenkins\\workspace\\nkins-multibranch-example_master\\dockerImage.txt" 
-            bat 'echo $BUILD_NUMBER > test.txt' // we can modify files in workspace
+            bat 'echo $BUILD_NUMBER > test.txt'
+	    bat "echo version := 1.0.${env.BUILD_ID} >> test.txt"
 		
             bat 'docker pull juberalam2k8/docker-jenkins:20'
            }
