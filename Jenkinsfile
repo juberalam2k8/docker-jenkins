@@ -1,5 +1,4 @@
 pipeline {
-  display: none;
   environment {
     registry = "juberalam2k8/docker-jenkins"
     registryCredential = 'dockerhub'
