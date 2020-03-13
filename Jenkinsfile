@@ -7,9 +7,7 @@ pipeline {
   .pipeline-annotated {
      display: none;
     }
-  .pipeline-new-node {
-    display: none;
-  }
+  
   agent any
   stages {
     stage('Cloning Git') {
