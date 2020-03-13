@@ -1,12 +1,16 @@
+.pipeline-annotated {
+     display: none;
+    }
+.pipeline-new-node {
+    display: none;
+}
 pipeline {
   environment {
     registry = "juberalam2k8/docker-jenkins"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
-  .pipeline-annotated {
-     display: none;
-    }
+  
   
   agent any
   stages {
