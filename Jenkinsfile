@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
+        bat "echo **********DEVELOP STAGE STARTS*************"
         git 'https://github.com/juberalam2k8/docker-jenkins.git'
       }
     }
@@ -15,6 +16,7 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          bat "echo **********DEVELOP STAGE STARTS*************"
         }
       }
     }
@@ -24,10 +26,10 @@ pipeline {
             }
       steps{
         script {
-          bat "echo *********************************************************"
+          bat "echo **********DEPLOYING IMAGES*************"
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
-          bat "echo *********************************************************"
+          bat "echo **********END DEPLOYMENT****************"
           }
         }
       }
