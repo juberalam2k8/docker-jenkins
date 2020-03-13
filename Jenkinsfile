@@ -7,14 +7,20 @@ pipeline {
   agent any
   stages {
     stage('Cloning Git') {
+     when {
+                branch 'develop'
+            }
       steps {
         git 'https://github.com/juberalam2k8/docker-jenkins.git'
       }
     }
     stage('Building image') {
+     when {
+                branch 'develop'
+            }
       steps{
         script {
-          dockerImage = docker.build registry
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -24,8 +30,10 @@ pipeline {
             }
       steps{
         script {
+          bat "echo *********************************************************"
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
+          bat "echo *********************************************************"
           }
         }
       }
@@ -48,7 +56,7 @@ pipeline {
            def filePath = readFile "C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-multibranch-example_qa\\test.txt" 
            def lines = filePath.readLines()
            env.build_num= lines
-           bat "docker pull juberalam2k8/docker-jenkins:${env.BUILD_NUMBER}"
+           bat "docker pull juberalam2k8/docker-jenkins:latest"
           // bat 'docker pull juberalam2k8/${env.build_num}'
            }
 	
